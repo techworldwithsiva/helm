@@ -1,3 +1,5 @@
+# values.yaml is the file to supply default values to helm charts
+# you can always override this at run time
 deployment:
   replicaCount: 2
   imageVersion: alpine
