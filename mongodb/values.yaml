@@ -1,0 +1,5 @@
+statefulset:
+  replicaCount: 1
+  imageVersion: v1
+service:
+  port: 27017

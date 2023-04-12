@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb
+  namespace: roboshop
+spec:
+  selector:
+    matchLabels:
+      name: mongodb # has to match .spec.template.metadata.labels
+      tier: db
+  serviceName: "mongodb"
+  replicas: {{ .Values.statefulset.replicaCount }} # by default is 1
+  template:
+    metadata:
+      labels:
+        name: mongodb # has to match .spec.template.metadata.labels
+        tier: db
+    spec:
+      containers:
+      - name: mongodb
+        image: "techworldwithsiva/mongodb:{{ .Values.statefulset.imageVersion }}"
+        ports:
+        - containerPort: 27017
+          name: mongodb
+        volumeMounts:
+        - name: mongodb-volume
+          mountPath: /data/db
+  volumeClaimTemplates:
+  - metadata:
+      name: mongodb-volume
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "ebs-sc"
+      resources:
+        requests:
+          storage: 1Gi
