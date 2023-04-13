@@ -1,6 +1,6 @@
 # This file to supply mandatory metadata like name, apiVersion, etc to Helm
 apiVersion: v1
 name: roboshop-mongodb
-version: 0.0.1 # this is the chart version
-description: This is to understand HELM through NgInx
-appVersion: 1.0.0 #this belongs to our application
+version: 0.0.1 # this is the chart version, make sure you upgrade this version for every change
+description: This is to understand How to convert mongodb into Helm
+appVersion: 1.0.0 #this belongs to our application, make sure you upgrade this everytime your app changes
